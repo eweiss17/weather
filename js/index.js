@@ -1,9 +1,9 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
     function geoLookUp() {
         $.ajax({
             url: "https://api.wunderground.com/api/a11346804b94d5dd/geolookup/q/autoip.json",
             dataType: "jsonp",
-            success: function(parsed_json) {
+            success: function (parsed_json) {
                 var state = parsed_json['location']['state'];
                 var city = parsed_json['location']['city'];
                 var country = parsed_json['location']['country'];
@@ -22,7 +22,7 @@ jQuery(document).ready(function($) {
         $.ajax({
             url: "https://api.wunderground.com/api/a11346804b94d5dd/geolookup/conditions/q/" + region + "/" + city + ".json",
             dataType: "jsonp",
-            success: function(parsed_json) {
+            success: function (parsed_json) {
                 var temp_f = parsed_json['current_observation']['temp_f'];
                 var temp_c = parsed_json['current_observation']['temp_c'];
                 var weather = parsed_json['current_observation']['weather'];
@@ -71,7 +71,7 @@ jQuery(document).ready(function($) {
                 //Temperature
                 $("#weather").html("In the city of " + city + " the weather is " + weather + ".");
                 $("#temp").html("The temperature in Fahrenheit is " + temp_f + "&deg;.");
-                $("#switcher").on("click", function() {
+                $("#switcher").on("click", function () {
                     if ($("#temp").hasClass("temp_f")) {
                         $("#temp").html("The temperature in Celsius is " + temp_c + "&deg;.");
                         $("#temp").removeClass("temp_f")
